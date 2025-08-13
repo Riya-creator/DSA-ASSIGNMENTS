@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n, arr[100], size=0;
+    cout<<"Can choose anything from the menu as:\n 1. CREATE\n2. DISPLAY \n3. INSERT\n 4.DELETE\n 5.LINEAR SEARCH\n6.EXIT";
+    cin>>n;
+    while( n!= 6){
+        switch(n){
+        case 1:{
+            cout<<"Enter the size of array u need to create";
+            cin>>size;
+            for( int i=0;i< size; i++){
+                cin>> arr[i];
+            }
+            break;
+        }
+        case 2:{
+            if( size==0){
+            cout<<"Array is empty";
+            break;
+            }
+            for( int i=0; i<size; i++){
+                cout<<arr[i]<<" ";
+            }
+            break;
+        }
+        case 3:{
+            int place, val;
+            cout<<"Enter the index where we need to add element and value :";
+            cin>>place>>val;
+            if( place<0 ||place>size){
+                cout<<"Wrong input for place";
+                break;
+            }
+            for( int i= size-1; i>=place; i--){
+                arr[i+1]= arr[i];
+            }
+            arr[place]= val;
+            size++;
+            break;
+        }
+        case 4:{
+            int pos;
+            cout<<"Enter the postion of element to be deleted";
+            cin>>pos;
+            if (size == 0) {
+                cout << "Array is empty. Nothing to delete.\n";
+                break;
+            }
+            if( pos<0 || pos>=size)
+            {
+                cout<<"Wrong input";
+                break;
+            }
+            for( int i=pos; i<size-1; i++){
+                arr[pos]=arr[pos+1];
+            }
+            size--;
+            break;
+        }
+        case 5:{
+            int value, found=-1;
+            cout << "Enter value to search: ";
+            cin >> value;
+            for (int i = 0; i < size; i++) {
+                if (arr[i] == value) {
+                    cout << "Value found at position " << i << ".\n";
+                    found=0;
+                    break;
+                }
+            }
+                cout << "Value not found.\n";
+            
+        }
+        default :{
+            cout<<"Wrong selection";
+            break;
+        }
+        }
+        cout<<"\n Select operation: ";
+        cin>>n;
+    }
+    
+}
