@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+void multiply(int A[10][10], int B[10][10], int res[10][10], int r1, int c1, int r2, int c2) {
+    if (c1 != r2) {
+        cout << "Matrix multiplication not possible (columns of A != rows of B)\n";
+        return;
+    }
+
+    for (int i = 0; i < r1; i++)
+        for (int j = 0; j < c2; j++)
+            res[i][j] = 0;
+
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++) {
+            for (int k = 0; k < c1; k++) {
+                res[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    cout << "\nResult of multiplication:\n";
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++) {
+            cout << res[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void transpose(int M[10][10], int rows, int cols) {
+    int temp[10][10];
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            temp[j][i] = M[i][j];
+
+    cout << "\nTranspose:\n";
+    for (int i = 0; i < cols; i++) {
+        for (int j = 0; j < rows; j++) {
+            cout << temp[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int A[10][10], B[10][10], res[10][10];
+    int r1, c1, r2, c2;
+
+    cout << "Enter rows and cols of Matrix A: ";
+    cin >> r1 >> c1;
+    cout << "Enter elements of Matrix A:\n";
+    for (int i = 0; i < r1; i++)
+        for (int j = 0; j < c1; j++)
+            cin >> A[i][j];
+
+    cout << "Enter rows and cols of Matrix B: ";
+    cin >> r2 >> c2;
+    cout << "Enter elements of Matrix B:\n";
+    for (int i = 0; i < r2; i++)
+        for (int j = 0; j < c2; j++)
+            cin >> B[i][j];
+
+    int num;
+    cout << "\nMenu:\n1. Multiply Matrices\n2. Transpose Matrices\nEnter choice: ";
+    cin >> num;
+
+    switch (num) {
+    case 1:
+        multiply(A, B, res, r1, c1, r2, c2);
+        break;
+    case 2:
+        cout << "\nTranspose of Matrix A:";
+        transpose(A, r1, c1);
+        cout << "\nTranspose of Matrix B:";
+        transpose(B, r2, c2);
+        break;
+    default:
+        cout << "Invalid choice!\n";
+    }
+}
