@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+
+void countr(int table[10][10], int totalRows, int totalColumns, int rows[]) {
+    cout << "\nSum of each row:\n";
+    for (int row = 0; row < totalRows; row++) {
+        int rowSum = 0;
+        for (int col = 0; col < totalColumns; col++) {
+            rowSum += table[row][col];
+        }
+        rows[row] = rowSum;
+    }
+}
+
+void countc(int table[10][10], int totalRows, int totalColumns, int cols[]) {
+    cout << "\nSum of each column:\n";
+    for (int col = 0; col < totalColumns; col++) {
+        int colSum = 0;
+        for (int row = 0; row < totalRows; row++) {
+            colSum += table[row][col];
+        }
+        cols[col] = colSum;
+    }
+}
+
+int main() {
+    int table[10][10];
+    int totalRows, totalColumns;
+
+    cout << "Enter number of rows and columns: ";
+    cin >> totalRows >> totalColumns;
+
+    int rows[10], cols[10]; 
+    cout << "Enter the elements of the matrix:\n";
+    for (int row = 0; row < totalRows; row++) {
+        for (int col = 0; col < totalColumns; col++) {
+            cin >> table[row][col];
+        }
+    }
+
+    countc(table, totalRows, totalColumns, cols);
+    countr(table, totalRows, totalColumns, rows);
+
+    cout << "\nColumn sums: ";
+    for (int i = 0; i < totalColumns; i++) cout << cols[i] << " ";
+
+    cout << "\nRow sums: ";
+    for (int i = 0; i < totalRows; i++) cout << rows[i] << " ";
+
+    cout << endl;
+    return 0;
+}
