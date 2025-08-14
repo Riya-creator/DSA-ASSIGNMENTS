@@ -1,0 +1,79 @@
+#include <iostream>
+#include<cstring>
+using namespace std;
+void concat ( ){
+    char s1[60], s2[60], s3[120];
+    cout<<"Need to enter two strings";
+    cin>>s1>> s2;
+    strcat(s1, " ");
+    strcat(s1, s2);
+    cout<<s1;
+}
+void reverse(){
+    char a[60];
+    cout<<"Enter the string to be reversed\n";
+    cin>>a;
+    int n=strlen(a);
+    for( int i=0 ;i<n/2; i++){
+        char temp= a[i];
+        a[i]= a[n-1-i];
+        a[n-1-i]= temp;
+    }
+    cout<<endl<<a;
+}
+void ndelete(){
+    char a[60];
+    cout<<"Enter the string to be reversed\n";
+    cin>>a;
+    int n=strlen(a), j=0;
+    for( int i=0; i< n;i++){
+        if( a[i]!='a'|| a[i]!= 'o'|| a[i]!='e'|| a[i]!='i'||a[i]!='u'){
+            a[j]= a[i];
+            j++;
+        }
+    }
+    for( int i=j; i<n; i++){
+        a[j]='\0';
+    }
+    cout<<"\nAfter vowel removal: "<<a;
+}
+void nsort(){
+    char a[60];
+    cout << "Enter the string to sort alphabetically: ";
+    cin >> a;
+    int n = strlen(a);
+    sort(a, a + n);
+    cout << "Sorted: " << a << endl;
+
+}
+void convert(){
+    char a[60];
+    cout << "Enter the string to convert to lowercase: ";
+    cin >> a;
+    for (int i = 0; a[i] != '\0'; i++) {
+        a[i] = tolower(a[i]);
+    }
+    cout << "lowercase converted string: " << a << endl;
+}
+int main()
+{
+    int part=0;
+    cout<<"Enter wihich part u need on ur string :1. concat\n2. reverse\n 3. delete vowels\n 4. sort in lphabetically order\n 5. convert from uppercase to lower";
+    cin>>part;
+    switch(part){
+        case 1:
+        concat();
+        break;
+        case 2:
+        reverse();
+        break;
+        case 3:
+        ndelete();
+        break;
+        case 4:
+        nsort();
+        break;
+        case 5:
+        convert();
+    }
+}
