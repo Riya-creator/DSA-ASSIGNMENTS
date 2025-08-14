@@ -1,0 +1,26 @@
+//  bubble sort ques2
+#include <iostream>
+using namespace std;
+void bubsort(int * a){
+    for( int i=0; i<7; i++){
+        for( int j=0; j<6-i;j++){
+            if(a[j]> a[j+1]){
+                int temp= a[j];
+                a[j]= a[j+1];
+                a[j+1]= temp;
+            }
+        }
+    }
+}
+void show(int *a){
+    cout<<"Array is :\n";
+    for( int i=0; i< 7; i++){
+        cout<<a[i]<<", ";
+    }
+}
+int main()
+{
+    int a[7]={64, 34, 25, 12, 22, 11, 90};
+    bubsort(a);
+    show(a);
+}
