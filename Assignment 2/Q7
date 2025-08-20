@@ -1,0 +1,34 @@
+//  bubble sort ques2
+#include <iostream>
+using namespace std;
+void bubsort(int * a, int n){
+    int flag=0;
+    for( int i=0; i<n; i++){
+        flag= 0;
+        for( int j=0; j<n-1-i;j++){
+            if(a[j]> a[j+1]){
+                cout<<"\n Got to find the inversion here:"<<a[j+1]<<", "<<a[j]<<"\n";
+                flag=1;
+                int temp= a[j];
+                a[j]= a[j+1];
+                a[j+1]= temp;
+            }
+        }
+            if( flag== 0){
+                cout<<"Kam ho gya";
+                break;
+            }
+    }
+}
+void show(int *a, int n){
+    cout<<"Array is :\n";
+    for( int i=0; i< n; i++){
+        cout<<a[i]<<", ";
+    }
+}
+int main()
+{
+    int a[7]={64, 34, 25, 12, 22, 11, 90};
+    bubsort(a, 7);
+    show(a,7);
+}
