@@ -29,6 +29,6 @@ void show(int *a, int n){
 int main()
 {
     int a[7]={64, 34, 25, 12, 22, 11, 90};
-    bubsort(a, 7);
     show(a,7);
+    bubsort(a, 7);
 }
